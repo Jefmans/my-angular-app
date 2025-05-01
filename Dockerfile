@@ -1,5 +1,5 @@
 # Step 1: Build the Angular app
-FROM node:16 AS build
+FROM node:latest AS build
 
 WORKDIR /app
 COPY . .
