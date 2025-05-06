@@ -11,8 +11,9 @@ RUN npm install
 
 RUN npm run build --prod
 
-# Debugging: List the contents of /app/dist to verify the build output
-RUN ls -l /app/dist
+# Write the contents of /app/dist to a file
+RUN ls -l /app/dist > /app/build_output.txt
+
 
 # # Step 2: Serve the app using Nginx
 # FROM nginx:alpine
