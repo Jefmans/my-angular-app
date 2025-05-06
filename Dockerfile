@@ -3,7 +3,7 @@ FROM node:latest AS build
 
 WORKDIR /app
 COPY . .
-RUN npm install
+RUN npm install -g @angular/cli
 RUN npm run build --prod
 
 # Step 2: Serve the app using Nginx
