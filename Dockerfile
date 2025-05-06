@@ -5,6 +5,9 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
+# Keep the container running
+CMD ["tail", "-f", "/dev/null"]
+
 # RUN npm install -g @angular/cli
 
 # # Install other dependencies
