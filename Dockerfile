@@ -1,10 +1,18 @@
 # Step 1: Build the Angular app
-FROM node:latest AS build
+FROM node:alpine AS build
 
 WORKDIR /app
 COPY . .
+
 RUN npm install -g @angular/cli
+
+# Install other dependencies
+RUN npm install
+
 RUN npm run build --prod
+
+# Debugging: List the contents of /app/dist to verify the build output
+RUN ls -l /app/dist
 
 # Step 2: Serve the app using Nginx
 FROM nginx:alpine
