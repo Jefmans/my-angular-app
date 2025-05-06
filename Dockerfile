@@ -1,9 +1,11 @@
 # Step 1: Build the Angular app
-FROM node:latest AS build
+FROM node:alpine AS build
 
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
+
+RUN npm install -g @angular/cli
 
 # Keep the container running
 CMD ["tail", "-f", "/dev/null"]
