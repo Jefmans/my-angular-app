@@ -1,29 +1,29 @@
 # Step 1: Build the Angular app
 FROM node:latest AS build
 
-RUN mkdir /app
+RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
-RUN npm install -g @angular/cli
+# RUN npm install -g @angular/cli
 
-# Install other dependencies
-RUN npm install
+# # Install other dependencies
+# RUN npm install
 
-RUN npm run build --prod
+# RUN npm run build --prod
 
-# Write the contents of /app/dist to a file
-RUN ls -l /app/dist > /app/build_output.txt
+# # Write the contents of /app/dist to a file
+# RUN ls -l /app/dist > /app/build_output.txt
 
 
-# Step 2: Serve the app using Nginx
-FROM nginx:alpine
+# # Step 2: Serve the app using Nginx
+# FROM nginx:alpine
 
-# Copy the built Angular files to Nginx's html directory
-COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html
+# # Copy the built Angular files to Nginx's html directory
+# COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html
 
-# Expose port 80 to access the app
-EXPOSE 80
+# # Expose port 80 to access the app
+# EXPOSE 8080
 
-# Run Nginx in the foreground
-CMD ["nginx", "-g", "daemon off;"]
+# # Run Nginx in the foreground
+# CMD ["nginx", "-g", "daemon off;"]
