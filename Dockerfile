@@ -12,12 +12,13 @@ RUN npm install -g @angular/cli
 RUN npm install
 
 # Install the required builder
-# RUN npm install --save-dev @angular-devkit/build-angular
+RUN npm install --save-dev @angular-devkit/build-angular
 
 # Build the Angular app (production build)
 RUN npm run build --prod
 
-
+# Copy the built Angular files from the build stage to Nginx's html directory
+COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html
 
 
 FROM nginx:alpine
@@ -25,8 +26,9 @@ FROM nginx:alpine
 # Remove the default Nginx static files
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy the built Angular files from the build stage to Nginx's html directory
-COPY --from=build /app/dist/my-angular-app /usr/share/nginx/html
+
+
+RUN chmod -R 755 /usr/share/nginx/html
 
 # Expose port 80 to access the app
 EXPOSE 80
