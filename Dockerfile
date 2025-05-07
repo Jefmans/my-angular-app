@@ -72,7 +72,7 @@ COPY . .
 RUN chmod -R 755 /usr/share/nginx/html
 
 # Copy the pre-built Angular files from the host machine to Nginx's html directory
-COPY ./dist/my-angular-app /usr/share/nginx/html
+COPY ./dist/my-angular-app/browser /usr/share/nginx/html
 
 # Expose port 80 to access the app
 EXPOSE 80
