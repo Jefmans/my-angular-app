@@ -67,7 +67,7 @@
 FROM nginx:alpine
 
 # Remove the default Nginx static files
-RUN rm -rf /usr/share/nginx/html/*
+# RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the pre-built Angular files from the host machine to Nginx's html directory
 COPY ./dist/my-angular-app /usr/share/nginx/html
