@@ -1,3 +1,4 @@
+
 # Step 1: Build the Angular app
 FROM node:alpine AS build
 
