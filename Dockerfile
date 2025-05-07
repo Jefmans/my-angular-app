@@ -12,7 +12,8 @@ RUN npm install -g @angular/cli
 RUN npm install
 
 # Install the required builder
-RUN npm install --save-dev @angular-devkit/build-angular
+# RUN npm install --save-dev @angular-devkit/build-angular
+RUN npm i @angular-devkit/build-angular
 
 # Build the Angular app (production build)
 RUN npm run build --prod
